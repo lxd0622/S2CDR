@@ -138,7 +138,7 @@ class Run(object):
 
 
     def CDR(self, model, adj_mat, test_data, UserItemNet, test_rating, item_map_src_list, batch_size):
-        print('==========BSCDR==========')
+        print('==========S2CDR==========')
         model.train()
         results = self.eval_mae(model, adj_mat, test_data, UserItemNet, test_rating, item_map_src_list, batch_size)
         print(results)
