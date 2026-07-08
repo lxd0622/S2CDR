@@ -1,0 +1,44 @@
+import os
+import torch
+import numpy as np
+import random
+import argparse
+import json
+from preprocessing import DataPreprocessingMid, DataPreprocessingReady
+from run import Run
+
+
+def prepare(config_path):
+    parser = argparse.ArgumentParser()  #解析命令行参数
+    parser.add_argument('--process_data_mid', default=0)
+    parser.add_argument('--process_data_ready', default=0)
+    parser.add_argument('--task', default='3')
+    parser.add_argument('--base_model', default='SS')
+    parser.add_argument('--ratio', type=float, nargs=2, default=[0.8, 0.2])
+    args = parser.parse_args()
+
+    with open(config_path, 'r') as f:
+        config = json.load(f)
+        config['base_model'] = args.base_model
+        config['task'] = args.task
+        config['ratio'] = args.ratio
+    return args, config
+
+
+if __name__ == '__main__':
+    config_path = 'config.json'
+    args, config = prepare(config_path)
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
+
+    if args.process_data_mid:
+        for dealing in ['Books', 'CDs_and_Vinyl', 'Movies_and_TV']:
+            DataPreprocessingMid(config['root'], dealing).main()
+    if args.process_data_ready:
+        for ratio in [[0.8, 0.2]]:
+            for task in ['1', '2', '3']:
+                DataPreprocessingReady(config['root'], config['src_tgt_pairs'], task, ratio).main()
+    print('task:{}; model:{}; ratio:{}; epoch:{}; lr:{}; gpu:{}; seed:{};'.
+          format(args.task, args.base_model, args.ratio, args.epoch, args.lr, args.gpu, args.seed))
+
+    if not args.process_data_mid and not args.process_data_ready:
+        Run(config).main()

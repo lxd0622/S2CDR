@@ -1,0 +1,35 @@
+{
+    "use_cuda": 1,
+    "root": "./data/",
+    "src_tgt_pairs":
+        {
+            "1":
+            {"src": "movie",
+            "tgt": "book",
+            "batchsize_test": 128
+            },
+            "2":
+            {"src": "Movies_and_TV",
+            "tgt": "CDs_and_Vinyl",
+            "batchsize_test": 128
+            },
+            "3":
+            {"src": "Books",
+            "tgt": "CDs_and_Vinyl",
+            "batchsize_test": 128
+            }
+        },
+    "emb_dim": 64,
+    "meta_dim": 50,
+    "maxlen_source": 20,
+    "maxlen_target": 20,
+    "num_fields": 2,
+    "wd": 0,
+    "dropout_rate": 0.1,
+    "timesteps": 200,
+    "beta_start": 0.0001,
+    "beta_end": 0.02,
+    "hidden_size": 64,
+    "diffuser_type": "mlp1",
+    "w": 2
+    }
