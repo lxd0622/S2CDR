@@ -44,6 +44,7 @@ You can run this model through:
 ```powershell
 # Run directly with default parameters 
 python entry.py
+```
 
 ## Acknowledgements
 
