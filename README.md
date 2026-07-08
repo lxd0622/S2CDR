@@ -1,5 +1,5 @@
 # S$^2$CDR: Smoothing-Sharpening Process Model for Cross-Domain Recommendation
-This is the official implementation of our paper **S$^2$CDR: Smoothing-Sharpening Process Model for Cross-Domain Recommendation (WWW 2026)**
+This is the official implementation of our paper **S$^2$CDR: Smoothing-Sharpening Process Model for Cross-Domain Recommendation** (WWW 2026)
 
 ## Requirements
 
