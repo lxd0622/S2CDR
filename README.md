@@ -44,3 +44,7 @@ You can run this model through:
 ```powershell
 # Run directly with default parameters 
 python entry.py
+
+## Acknowledgements
+
+Our code is based on the implementations of [BSPM](https://github.com/jeongwhanchoi/BSPM) and [DMCDR](https://github.com/lxd0622/DMCDR).
